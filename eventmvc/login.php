@@ -25,7 +25,7 @@ if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 	$pass=$_POST['pass'];
 
 	$con=mysql_connect('localhost','root','root') or die(mysql_error());
-	mysql_select_db('user-registration') or die("cannot select DB");
+	mysql_select_db('userr') or die("cannot select DB");
 
 	$query=mysql_query("SELECT * FROM members WHERE username='".$user."' AND password='".$pass."'");
 	$numrows=mysql_num_rows($query);

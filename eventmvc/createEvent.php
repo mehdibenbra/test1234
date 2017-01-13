@@ -62,7 +62,7 @@ if(!empty($_POST['title']) && !empty($_POST['description'])) {
     
 
 	$con=mysql_connect('localhost','root','') or die(mysql_error());
-	mysql_select_db('user-registration') or die("cannot select DB");
+	mysql_select_db('userr') or die("cannot select DB");
 
 	$query=mysql_query("SELECT * FROM events WHERE title='".$title."'");
 	$numrows=mysql_num_rows($query);

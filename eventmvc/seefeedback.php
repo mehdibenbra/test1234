@@ -45,7 +45,7 @@ session_start();
     
 $filston=$_POST['filston'];
 $con=mysql_connect('localhost','root','') or die(mysql_error());
-mysql_select_db('user-registration') or die("cannot select DB");    
+mysql_select_db('userr') or die("cannot select DB");    
 $sql="SELECT * FROM ticket";       
 $result33=mysql_query($sql);
 while($row=mysql_fetch_array($result33)):;

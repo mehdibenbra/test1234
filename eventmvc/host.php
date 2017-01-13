@@ -5,7 +5,7 @@
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$databaseName = "user-registration";
+$databaseName = "userr";
 
 session_start();
 if(!isset($_SESSION["sess_id"])){

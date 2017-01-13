@@ -81,7 +81,7 @@ $comment=$_POST['comment'];
 $filston=$_POST['filston'];
 //$sql="INSERT INTO ticket(usergrade,usercomment) WHERE eventid='$event' AND memberidattending='$id' VALUES($event,'$event')";//
 $con=mysql_connect('localhost','root','') or die(mysql_error());
-mysql_select_db('user-registration') or die("cannot select DB");
+mysql_select_db('userr') or die("cannot select DB");
     $sql="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='".$id."' AND eventid='$filston'"; 
             //$sql2="UPDATE ticket SET ";  
 $result33=mysql_query($sql);

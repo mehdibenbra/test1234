@@ -5,7 +5,7 @@
 $hostname = "localhost";
 $username = "root";
 $password = "root";
-$databaseName = "user-registration";
+$databaseName = "userr";
 
 session_start();
 $id = $_SESSION['sess_id'];
@@ -84,7 +84,7 @@ if(isset($_POST["submit"]))
     $event=$_POST['eventlist'];
         
 $con=mysql_connect('localhost','root','') or die(mysql_error());
-	mysql_select_db('user-registration') or die("cannot select DB");
+	mysql_select_db('userr') or die("cannot select DB");
     
     
 

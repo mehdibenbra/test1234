@@ -1,6 +1,6 @@
 <?php
 $connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('user-registration');
+mysql_select_db('userr');
 session_start();
 $id = $_SESSION['sess_id'];
 ?> 
