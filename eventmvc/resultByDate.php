@@ -29,7 +29,7 @@
     $dateone=$_POST["date1"];
     $datetwo=$_POST["date2"];
     
-    $connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
+    $connection = mysql_connect('localhost', 'root', 'root'); //The Blank string is the password
     mysql_select_db('user-registration'); //ok jusquici 
     $query = "SELECT * FROM events WHERE startdate >= '$dateone' AND startdate <= '$datetwo' ";
     $result = mysql_query($query);

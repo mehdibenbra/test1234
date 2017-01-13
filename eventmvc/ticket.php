@@ -4,7 +4,7 @@
 
 $hostname = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $databaseName = "user-registration";
 
 session_start();
