@@ -18,13 +18,16 @@ Password: <input type="password" name="pass"><br />
 <input type="submit" value="Login" name="submit" />
 </form>
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    
 if(isset($_POST["submit"])){
 
 if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 	$user=$_POST['user'];
 	$pass=$_POST['pass'];
 
-	$con=mysql_connect('localhost','root','root') or die(mysql_error());
+	$con=mysql_connect('localhost','root','') or die(mysql_error());
 	mysql_select_db('userr') or die("cannot select DB");
 
 	$query=mysql_query("SELECT * FROM members WHERE username='".$user."' AND password='".$pass."'");
