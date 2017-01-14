@@ -1,10 +1,16 @@
 
 <?php
-$connection = mysql_connect('localhost', 'root', 'root'); //The Blank string is the password
-mysql_select_db('user-registration');
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+
 
 $query = "SELECT * FROM events WHERE startdate<NOW()"; //You don't need a ; like you do in SQL
-$result = mysql_query($query) or die(mysql_error()."[".$query."]");;
+$result = mysqli_query($connect,$query);
+
 
 session_start();
  $id = $_SESSION['sess_id'];
@@ -21,8 +27,8 @@ session_start();
      <h4> Welcome, <?=$_SESSION['sess_id'];?> </h4>
     
      <form action="" method="POST">
- <select name='filston'>
-              <?php while($row = mysql_fetch_array($result)):;?>
+ <select name='choice'>
+              <?php while($row = mysqli_fetch_array($result)):;?>
 
            <option 
             value="<?php echo $row[0];?>"> 
@@ -37,21 +43,55 @@ session_start();
     </form>
 
     
-</body>
+</body>  
+</html>
+<?php  
+
+if(isset($_POST["submit"])) {
+    
+    $choice=$_POST['choice'];
+
+ 
+
+$query2 = "SELECT * FROM ticket WHERE eventid = '$choice' " ;
+
+$resultx = mysqli_query($connect,$query2);
+
+
+while($row1=mysqli_fetch_array($resultx)){
+
+$userid=$row1['memberid'];
+$grade=$row1['usergrade'];
+$comment=$row1['usercomment'];
+
+echo "Grade: ". $grade." Comment: ".$comment. " From: ";
     
 
-</html>
-<?php  if(isset($_POST["submit"])):;
+$query56 = "SELECT * FROM members WHERE id = '$userid' " ;
     
-$filston=$_POST['filston'];
-$con=mysql_connect('localhost','root','') or die(mysql_error());
-mysql_select_db('userr') or die("cannot select DB");    
-$sql="SELECT * FROM ticket";       
-$result33=mysql_query($sql);
-while($row=mysql_fetch_array($result33)):;
-if ($filston==$row['eventid']) {
-        echo $row['usercomment'];  
+$resultx2 = mysqli_query($connect,$query56);
+
+    while($row2=mysqli_fetch_array($resultx2)){
+        
+         $userFName=$row2['fname'];
+        $userLName=$row2['lname'];
+        $username=$row2['username'];
+        
+        echo "$userFName"."<br />";
+    }
+       
+
+/*else if (is_null(($row['usergrade']),$row['usercomment']))
+{
+echo "No feedback";    
 }
-endwhile;
-endif; 
+*/
+    
+}
+
+
+    
+    
+}
+
 ?>       

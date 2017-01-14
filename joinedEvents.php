@@ -1,9 +1,7 @@
-
 <?php
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('user-registration');
+$connect=mysqli_connect('localhost','root','root','userr');  
 $query = "SELECT * FROM ticket"; //You don't need a ; like you do in SQL
-$result = mysql_query($query);
+$result = mysqli_query($connect,$query);
 session_start();
 if(!isset($_SESSION["sess_name"])){
 	header("location:login.php");
@@ -16,28 +14,42 @@ if(!isset($_SESSION["sess_id"])){
 ?>
 
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <head>
-<title>Joined events </title>
+<title>Create Event</title>
 </head>
 <body>
+
+ <h2>My Event Website</h2>                 
+  <ul class="nav nav-pills" role="tablist">
+    <li class="active"><a href="createEvent.php">Create Event</a></li>
+    <li><a href="host.php">My events</a></li>
+    <li><a href="allevents.php">All events</a></li>
+    <li><a href="createEvent.php">Create an event</a></li>
+    <li><a href="browsebycategory.php">Browse (category)</a></li>
+    <li><a href="browseByDate.php">Browse (date)</a></li>
+    <li><a href="feedback.php">Give feedback</a></li> 
+    <li><a href="seefeedback.php">See feedback</a></li>
+    <li> <a href="logout.php">Logout</a></li>
+  </ul>
     
-  <p> <a href="createEvent.php"> Create Event</a> | <a href="myevents.php">My events</a> | <a href="allEvents.php">All events</a> | <a href="ticket.php">Book Ticket </a> | <a href="browseByDate.php"> Browse events by date </a> | <a href="joinedEvents.php">Joined events </a>  | <a href="host.php">Hosted events </a>  | <a href="logout.php">Logout </a></p>
     
-     <h4> Here are the events you have booked tickets for , <?=$_SESSION['sess_name'];?> </h4>
+<h4> Here are the events you have booked tickets for , <?=$_SESSION['sess_name'];?> </h4>
     <?php
 echo "<events>"; // start a table tag in the HTML
 
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
- if ($id==$row['memberid']) {
+while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
+ if ($id==$row['memberidattending']) {
     
-     $eventid = $row['eventid'];
-     $connection1 = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-     mysql_select_db('user-registration');
-
-     $query1 = "SELECT * FROM events WHERE id='".$eventid."'"; //You don't need a ; like you do in SQL
-     $result1 = mysql_query($query1);
+$eventid = $row['eventid'];     
+$query1 = "SELECT * FROM events WHERE id='".$eventid."'"; //You don't need a ; like you do in SQL
+$result1 = mysqli_query($connect, $query1);
      
-     while($rowk = mysql_fetch_array($result1)){   //Creates a loop to loop through results
+while($rowk = mysqli_fetch_array($result1)){   //Creates a loop to loop through results
   {
      
    echo "Title of the event: " . $rowk['title'] . " @ " . $rowk['location'] . "</td> <td>" . " on the " . $rowk['startdate']."<br />". "Description: " .  $rowk['description']."<br />". "Type of event: " .  $rowk['categorisation']."<br />" . "</td><br /></tr>" ;  
@@ -50,7 +62,7 @@ while($row = mysql_fetch_array($result)){   //Creates a loop to loop through res
 
 echo "</events>"; //Close the table in HTML
 
-mysql_close(); //Make sure to close out the database connection
+mysqli_close($connect); //Make sure to close out the database connection
     ?>
 
 </body>
