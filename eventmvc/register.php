@@ -24,6 +24,8 @@ Phone number: <input type="number" name="phone"><br />
 <input type="submit" value="Register" name="submit" />
 </form>
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(isset($_POST["submit"])){
 
 if(!empty($_POST['user']) && !empty($_POST['pass'])  && !empty($_POST['fname'])  && !empty($_POST['lname'])  && !empty($_POST['email'])  && !empty($_POST['adress'])  && !empty($_POST['age']) && !empty($_POST['number']) ) {
