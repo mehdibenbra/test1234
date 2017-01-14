@@ -4,15 +4,8 @@ $hostname = "localhost";
 $username = "root";
 $password = "root";
 $databaseName = "userr";
-
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
-
-
 session_start();
-if(!isset($_SESSION["sess_name"])){
-	header("location:createEvent.php");
-} else {}
 ?>
 
 <!doctype html>
@@ -80,17 +73,14 @@ if(!empty($_POST['title']) && !empty($_POST['description'])) {
 	if($numrows==0)
 	{
         
-        
-	$sql="INSERT INTO events(title,description,location,startdate,enddate,categorisation,tickets,userid) VALUES('$title','$description','$location','$startdate','$enddate','$categorisation','$tickets','$id')";
+    
 
-	$result2= mysqli_query($connect,$sql);
+	
 
 
-	if($result2){
-	echo "Event Successfully Created";
-	} else {
-	echo "Failure!";
-	}
+	
+	echo "Event ta9 Created";
+	 
 
 	} else {
 	echo "That title already exists! Please try again with another.";
