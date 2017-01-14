@@ -72,10 +72,9 @@ if(isset($_POST["submit"]))
         
     }else{
         
-     
         
-        $sql="INSERT INTO ticket(memberidattending,eventid) VALUES(2,4)";
-        $result4 = mysqli_query($connect, $sql);
+        $query4 ="INSERT INTO ticket(memberidattending,eventid) VALUES('2','4')";
+        $result4 = mysqli_query($connect, $query4);
         
         
         if($result4){
