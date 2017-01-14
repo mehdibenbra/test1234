@@ -74,7 +74,7 @@ $id = $_SESSION['sess_id'];
             <option name=five>5/5</option>
     </select>
     
-    <br>Comment: <br>
+    <br>Coment: <br>
         <input type="text" name="comment">
     
         

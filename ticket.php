@@ -15,6 +15,8 @@ $today = date("Y-m-d");
 // connect to mysql database
 
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+// mysql select query
 $query = "SELECT * FROM `events` WHERE enddate >='$today'";
 
 // for method 1
@@ -60,6 +62,13 @@ $result1 = mysqli_query($connect, $query);
 if(isset($_POST["submit"]))
 {
     $event=$_POST['eventlist'];
+        
+$con=mysql_connect('localhost','root','') or die(mysql_error());
+	mysql_select_db('user-registration') or die("cannot select DB");
+    
+    
+
+	
     $query2 = "SELECT tickets FROM events WHERE id = '$event' limit 1" ;
     $result2 = mysqli_query($connect, $query2);
     
@@ -72,9 +81,11 @@ if(isset($_POST["submit"]))
         
     }else{
         
+        $query3="UPDATE events SET tickets= tickets-1 WHERE id='$event'";
+        $result3 = mysqli_query($connect, $query3);
         
-        $query4 ="INSERT INTO ticket(memberidattending,eventid) VALUES('2','4')";
-        $result4 = mysqli_query($connect, $query4);
+        $sql="INSERT INTO ticket(memberid,eventid) VALUES('$id','$event')";
+        $result4=mysqli_query($connect, $sql);
         
         
         if($result4){
