@@ -42,7 +42,7 @@ $adress=$_POST['adress'];
 $age=$_POST['age'];
 $phone=$_POST['phone'];
     
-$connect=mysqli_connect('localhost','root','root','user-registration');
+$connect=mysqli_connect('localhost','root','root','userr');
 $query="SELECT * FROM members WHERE username='".$user."'";
 $result = mysqli_query($connect, $query);
 $numrows=mysqli_num_rows($result);
