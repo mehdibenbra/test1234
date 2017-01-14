@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2017 at 11:28 PM
+-- Generation Time: Jan 14, 2017 at 11:52 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `memberid` int(11) NOT NULL,
   `eventid` int(11) NOT NULL,
-  `usergrade` int(11) NOT NULL,
+  `usergrade` int(11) DEFAULT NULL,
   `usercomment` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `memberid` (`memberid`,`eventid`),
