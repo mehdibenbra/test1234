@@ -29,7 +29,7 @@ if(isset($_POST["submit"])){
 if(!empty($_POST['user']) && !empty($_POST['pass'])  && !empty($_POST['fname'])  && !empty($_POST['lname'])  && !empty($_POST['email'])  && !empty($_POST['adress'])  && !empty($_POST['age']) && !empty($_POST['number']) ) {
 	
 
-	$con=mysql_connect('userr','root','') or die(mysql_error());
+	$con=mysql_connect('localhost','root','root') or die(mysql_error());
 	mysql_select_db('userr') or die("cannot select DB");
 
 	$query=mysql_query("SELECT * FROM members WHERE username='".$user."'");
