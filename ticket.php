@@ -63,10 +63,7 @@ if(isset($_POST["submit"]))
 {
     $event=$_POST['eventlist'];
         
-$con=mysql_connect('localhost','root','') or die(mysql_error());
-	mysql_select_db('user-registration') or die("cannot select DB");
-    
-    
+
 
 	
     $query2 = "SELECT tickets FROM events WHERE id = '$event' limit 1" ;
