@@ -15,8 +15,6 @@ $today = date("Y-m-d");
 // connect to mysql database
 
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
-// mysql select query
 $query = "SELECT * FROM `events` WHERE enddate >='$today'";
 
 // for method 1
@@ -77,11 +75,9 @@ if(isset($_POST["submit"]))
         $query3="UPDATE events SET tickets= tickets-1 WHERE id='$event'";
         $result3 = mysqli_query($connect, $query3);
         
-        $sql="INSERT INTO ticket(memberidattending,eventid) VALUES('$id','$event')";
-        $result4=mysqli_query($connect, $sql);
         
         
-        if($result4){
+        if($result3){
 	echo "Event Successfully Booked";
 	} else {
 	echo "Failure!";
