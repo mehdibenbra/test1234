@@ -4,8 +4,9 @@
 
 $hostname = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $databaseName = "userr";
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 session_start();
 if(!isset($_SESSION["sess_id"])){
@@ -24,10 +25,9 @@ $today = date("Y-m-d");
 
 
 
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-     mysql_select_db('user-registration');
+
      $query = "SELECT * FROM events"; //You don't need a ; like you do in SQL
-     $result = mysql_query($query);
+     $result = mysqli_query($connect,$query);
 
 ?>
 
@@ -57,7 +57,7 @@ $connection = mysql_connect('localhost', 'root', ''); //The Blank string is the 
 
             <?php 
             
-            while($row1 = mysql_fetch_array($result)):;
+            while($row1 = mysqli_fetch_array($result)):;
             if ($id==$row1['userid']):;
             
             ?>
@@ -90,24 +90,24 @@ if(isset($_POST["submit"]))
     
     
     
-     $connection1 = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-     mysql_select_db('user-registration') or die("cannot select database");
+    
      $query11 = "SELECT * FROM ticket "; //You don't need a ; like you do in SQL
-     $result2 = mysql_query($query11);
+     $result2 = mysqli_query($connect,$query11);
      
-     while($rowk = mysql_fetch_array($result2)){   //Creates a loop to loop through results
+     while($rowk = mysqli_fetch_array($result2)){   //Creates a loop to loop through results
   {
       if ($event == $rowk ['eventid']) {
   
           $memberid = $rowk['memberid'];
           
-     $connection2 = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-     mysql_select_db('user-registration');
+    
 
      $query2 = "SELECT * FROM members WHERE id='".$memberid."'"; //You don't need a ; like you do in SQL
-     $result3 = mysql_query($query2);
+     $result3 = mysqli_query($connect,$query2);
+          
+          
      
-     while($rowk1 = mysql_fetch_array($result3)){   //Creates a loop to loop through results
+     while($rowk1 = mysqli_fetch_array($result3)){   //Creates a loop to loop through results
   {
      
    echo  "<br /><br />" ."First Name: ". $rowk1['fname'] . "<br/> </td> <td>" ."Last Name: ".$rowk1['lname'] . "<br /></td> <td>" ."Email : ". $rowk1['email']."</td> <td>" . "</td><br /></tr>" ;  

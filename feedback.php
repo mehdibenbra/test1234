@@ -1,11 +1,17 @@
 <?php
 // php select option value from database
+
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
 session_start();
 $id = $_SESSION['sess_id'];
- mysql_connect("localhost", "root","") or die(mysql_error());
-     mysql_select_db("user-registration") or die(mysql_error());
-    $queryfirst="SELECT * FROM ticket WHERE memberidattending='$id'";
-    $resultone = mysql_query($queryfirst) or die(mysql_error()."[".$queryfirst."]");
+
+    $queryfirst= "SELECT * FROM ticket WHERE memberid='$id'" ;
+    $resultone = mysqli_query($connect,$queryfirst);
     
 ?>
 <!doctype html>
@@ -37,11 +43,13 @@ $id = $_SESSION['sess_id'];
     <form action="" method="POST">
  <select name='filston'>
              <?php      
-         while($row = mysql_fetch_array($resultone)):;
+         while($row = mysqli_fetch_array($resultone)):;
             $idbis=$row['eventid'];
+     
             $query="SELECT * FROM events WHERE startdate<NOW() AND id=$idbis";
-            $result = mysql_query($query) or die(mysql_error()."[".$query."]");
-                while($rowk = mysql_fetch_array($result)):;
+            $result = mysqli_query($connect,$query);
+     
+                while($rowk = mysqli_fetch_array($result)):;
                         if ($idbis==$rowk['id']):;    
             ?>     
 
@@ -80,11 +88,11 @@ $rate=$_POST['rate'];
 $comment=$_POST['comment'];
 $filston=$_POST['filston'];
 //$sql="INSERT INTO ticket(usergrade,usercomment) WHERE eventid='$event' AND memberidattending='$id' VALUES($event,'$event')";//
-$con=mysql_connect('localhost','root','') or die(mysql_error());
-mysql_select_db('userr') or die("cannot select DB");
-    $sql="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='".$id."' AND eventid='$filston'"; 
+
+    
+    $sql="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberid='".$id."' AND eventid='$filston'"; 
             //$sql2="UPDATE ticket SET ";  
-$result33=mysql_query($sql);
+$result33=mysqli_query($connect,$sql);
             if ($result33){
                 echo "Thank you !";
                 } else {

@@ -1,3 +1,14 @@
+<?php
+
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -10,7 +21,16 @@
 </head>
 <body>
 
-<p><a href="register.php">Register</a> | <a href="login.php">Login</a></p>
+<ul class="nav nav-pills" role="tablist">
+    <li><a href="register.php">Register</a></li>
+    <li class="active"> <a href="login.php">Login</a> </li>
+    </ul>
+    
+    
+    
+    
+    
+    
 <h3>Login Form</h3>
 <form action="" method="POST">
 Username: <input type="text" name="user"><br />
@@ -20,21 +40,20 @@ Password: <input type="password" name="pass"><br />
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-    
 if(isset($_POST["submit"])){
 
 if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 	$user=$_POST['user'];
 	$pass=$_POST['pass'];
 
-	$con=mysql_connect('localhost','root','root') or die(mysql_error());
-	mysql_select_db('userr') or die("cannot select DB");
 
-	$query=mysql_query("SELECT * FROM members WHERE username='".$user."' AND password='".$pass."'");
-	$numrows=mysql_num_rows($query);
+	$query="SELECT * FROM members WHERE username='".$user."' AND password='".$pass."'";
+    $result = mysqli_query($connect, $query);
+    
+	$numrows=mysqli_num_rows($result);
 	if($numrows!=0)
 	{
-	while($row=mysql_fetch_assoc($query))
+	while($row=mysqli_fetch_assoc($result))
 	{
 	$dbusername=$row['username'];
 	$dbpassword=$row['password'];

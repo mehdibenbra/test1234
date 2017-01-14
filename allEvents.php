@@ -1,12 +1,35 @@
 
 <?php
-$connection = mysql_connect('localhost', 'root', 'root'); //The Blank string is the password
-mysql_select_db('userr');
-$query = "SELECT * FROM events"; //You don't need a ; like you do in SQL
-$result = mysql_query($query);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// php select option value from database
+
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+
+
+// connect to mysql database
+
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+// mysql select query
+$query = "SELECT * FROM `events`";
+
+// for method 1
+
+$result = mysqli_query($connect, $query);
+
+
+
 session_start();
  $id = $_SESSION['sess_id'];
 $name = $_SESSION['sess_name'];
+
+
+
 ?>
 <!doctype html>
 <html>
@@ -16,16 +39,15 @@ $name = $_SESSION['sess_name'];
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
-<title>Create Events</title>
+<title>All events</title>
 </head>
 <body>
 
  <h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
-    <li><a href="home.html">Home</a></li>
+    <li><a href="createEvent.php">Create Event</a></li>
     <li><a href="myevents.php">My events</a></li>
-    <li><a href=" class=active">All events</a></li>
-    <li><a href="createEvent.php">Create an event</a></li>
+    <li class="active"><a href="allEvents.php">All events</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
     <li><a href="browseByDate.php">Browse (date)</a></li>
     <li><a href="feedback.php">Give feedback</a></li> 
@@ -45,7 +67,7 @@ $name = $_SESSION['sess_name'];
     
     <?php
     
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
  
     
    echo "Title of the event: " . $row['title'] . " @ " . $row['location'] . "</td> <td>" . " on the " . $row['startdate']."<br />". "Description: " .  $row['description']."<br />". "Type of event: " .  $row['categorisation']."<br />" . "</td><br /></tr>" ;
@@ -55,8 +77,7 @@ while($row = mysql_fetch_array($result)){   //Creates a loop to loop through res
 }
 
 echo "</events>"; //Close the table in HTML
-
-mysql_close(); //Make sure to close out the database connection
+ //Make sure to close out the database connection
     ?>
         </div>
 

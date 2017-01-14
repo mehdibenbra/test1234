@@ -1,4 +1,14 @@
 <?php 
+
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+
+
 session_start();
 if(!isset($_SESSION["sess_name"])){
 	header("location:createEvent.php");
@@ -13,15 +23,15 @@ if(!isset($_SESSION["sess_name"])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
-<title>Create Events</title>
+<title>Create Event</title>
 </head>
 <body>
 
  <h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
-    <li><a href="home.html">Home</a></li>
+    <li class="active"><a href="createEvent.php">Create Event</a></li>
     <li><a href="myevents.php">My events</a></li>
-    <li><a href=" class=active">All events</a></li>
+    <li><a href="allevents.php">All events</a></li>
     <li><a href="createEvent.php">Create an event</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
     <li><a href="browseByDate.php">Browse (date)</a></li>
@@ -61,19 +71,22 @@ if(!empty($_POST['title']) && !empty($_POST['description'])) {
     $id = $_SESSION['sess_id'];
     
 
-	$con=mysql_connect('localhost','root','') or die(mysql_error());
-	mysql_select_db('userr') or die("cannot select DB");
+	
 
-	$query=mysql_query("SELECT * FROM events WHERE title='".$title."'");
-	$numrows=mysql_num_rows($query);
+	$query= "SELECT * FROM events WHERE title='".$title."'";
+    $result = mysqli_query($connect, $query);
+    
+	$numrows=mysqli_num_rows($result);
 	if($numrows==0)
 	{
+        
+        
 	$sql="INSERT INTO events(title,description,location,startdate,enddate,categorisation,tickets,userid) VALUES('$title','$description','$location','$startdate','$enddate','$categorisation','$tickets','$id')";
 
-	$result=mysql_query($sql);
+	$result2= mysqli_query($connect,$sql);
 
 
-	if($result){
+	if($result2){
 	echo "Event Successfully Created";
 	} else {
 	echo "Failure!";

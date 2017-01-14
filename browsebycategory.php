@@ -1,6 +1,14 @@
 <?php
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('userr');
+
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$databaseName = "userr";
+
+$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+
+
 session_start();
 $id = $_SESSION['sess_id'];
 ?> 
@@ -45,14 +53,27 @@ $id = $_SESSION['sess_id'];
 <?php  if(isset($_POST["submit"])):;
     
 $categorisation=$_POST['categorisation'];   
-$sql="SELECT * FROM events WHERE categorisation='$categorisation'";       
-$result=mysql_query($sql);
+    
+$sql="SELECT * FROM events WHERE categorisation='$categorisation'";  
+    
+$result=mysqli_query($connect,$sql);
+       
+$numrows=mysqli_num_rows($result);
+    
+  if ($numrows==0){
+      
+        echo "No events in the category ";
+      
+    } else{
 
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+while($row = mysqli_fetch_array($result)){ 
  
+        
    echo "<tr><td>" . $row['title'] . "" . $row['description'] . "</td> <td>" . $row['location']."</td> <td>" . $row['startdate']."</td> <td>" . $row['enddate']."</td> <td>" . $row['categorisation']."</td> <td>" . $row['tickets']."</td> <td>" . "</td><br /></tr>" ;  
       //$row['index'] the index here is a field name
 }
+   
+    }
 
 endif; 
 ?>       

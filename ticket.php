@@ -9,13 +9,15 @@ $databaseName = "userr";
 
 session_start();
 $id = $_SESSION['sess_id'];
+$today = date("Y-m-d");
+
 
 // connect to mysql database
 
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
-$query = "SELECT * FROM `events`";
+$query = "SELECT * FROM `events` WHERE enddate >='$today'";
 
 // for method 1
 
@@ -26,44 +28,22 @@ $result1 = mysqli_query($connect, $query);
 <!DOCTYPE html>
 
 <html>
-        
-<head>
- 
-<link rel="stylesheet" href="style2.css">
 
+    <head>
 
-<title>Register events</title>
-<title> PHP SELECT OPTIONS FROM DATABASE </title>
+        <title> Book ticket! </title>
 
         <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-</head>
-<body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<br />
-<div id="title" class="wesh">
-<img src="">
+    </head>
 
-<nav class="nav">
-     <a href="myevents.php"> My Events</a>
-    <a href="ticket.php"> Book your ticket </a>
-   <a href="myevents.php"> Give your feedback </a>
-    <a href="seefeedback.php"> My Events</a>
-    <a href="myevents.php"> My Events</a>
-    </nav>
-
-   
-    
-    <h3>Registration Form for events</h3>
-    <h4> Welcome, <?=$_SESSION['sess_id'];?> </h4>
-</div>
-
-
-
-<body>
-
-        <!--Method One-->
+    <body>
+       <p> <a href="createEvent.php"> Create Event</a> | <a href="myevents.php">My events</a> | <a href="allEvents.php">All events</a> | <a href="ticket.php">Book Ticket </a> | <a href="browseByDate.php"> Browse events by date </a> | <a href="joinedEvents.php">Joined events </a>  | <a href="host.php">Hosted events </a>  | <a href="logout.php">Logout </a></p>
+       
+        <h4> Choose an event to book a ticket, all of them are free!</h4>
+        
  <form action="" method="POST">
         <select name="eventlist">
 
@@ -83,29 +63,32 @@ if(isset($_POST["submit"]))
 {
     $event=$_POST['eventlist'];
         
-$con=mysql_connect('localhost','root','root') or die(mysql_error());
-	mysql_select_db('userr') or die("cannot select DB");
+$con=mysql_connect('localhost','root','') or die(mysql_error());
+	mysql_select_db('user-registration') or die("cannot select DB");
     
     
 
-	$query=mysql_query("SELECT * FROM ticket WHERE memberidattending='".$id."'");
-	$numrows=mysql_num_rows($query);
-    $result33=mysql_query("SELECT tickets FROM events WHERE id='$event' limit 1");
-    $nbtickets = mysql_fetch_array($result33);
-
+	
+    $query2 = "SELECT tickets FROM events WHERE id = '$event' limit 1" ;
+    $result2 = mysqli_query($connect, $query2);
     
+    $nbtickets = mysqli_fetch_array($result2);
+
     if($nbtickets[0] <=0){
         
         echo "No tickets left";
-        mysql_close();
+        mysqli_close($connect);
         
     }else{
         
-        $query2=mysql_query("UPDATE events SET tickets= tickets-1 WHERE id='$event'");
-        $sql="INSERT INTO ticket(memberidattending,eventid) VALUES('$id','$event')";
-
-	   $result=mysql_query($sql);
-        if($result){
+        $query3="UPDATE events SET tickets= tickets-1 WHERE id='$event'";
+        $result3 = mysqli_query($connect, $query3);
+        
+        $sql="INSERT INTO ticket(memberid,eventid) VALUES('$id','$event')";
+        $result4=mysqli_query($connect, $sql);
+        
+        
+        if($result4){
 	echo "Event Successfully Booked";
 	} else {
 	echo "Failure!";
