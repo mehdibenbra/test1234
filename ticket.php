@@ -84,7 +84,7 @@ $con=mysql_connect('localhost','root','') or die(mysql_error());
         $query3="UPDATE events SET tickets= tickets-1 WHERE id='$event'";
         $result3 = mysqli_query($connect, $query3);
         
-        $sql="INSERT INTO ticket(memberid,eventid) VALUES('$id','$event')";
+        $sql="INSERT INTO ticket(memberidattending,eventid) VALUES('$id','$event')";
         $result4=mysqli_query($connect, $sql);
         
         

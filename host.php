@@ -98,7 +98,7 @@ if(isset($_POST["submit"]))
   {
       if ($event == $rowk ['eventid']) {
   
-          $memberid = $rowk['memberid'];
+          $memberid = $rowk['memberidattending'];
           
     
 
