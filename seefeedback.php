@@ -12,6 +12,7 @@ $query = "SELECT * FROM events WHERE startdate<NOW()"; //You don't need a ; like
 $result = mysqli_query($connect,$query);
 
 
+
 session_start();
  $id = $_SESSION['sess_id'];
 ?>
@@ -60,7 +61,7 @@ $resultx = mysqli_query($connect,$query2);
 
 while($row1=mysqli_fetch_array($resultx)){
 
-$userid=$row1['memberid'];
+$userid=$row1['memberidattending'];
 $grade=$row1['usergrade'];
 $comment=$row1['usercomment'];
 
