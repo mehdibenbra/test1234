@@ -68,7 +68,7 @@ $comment=$row1['usercomment'];
 echo "Grade: ". $grade." Comment: ".$comment. " From: ";
     
 
-$query56 = "SELECT * FROM members WHERE id = '$userid' " ;
+$query56 = "SELECT * FROM members WHERE id = '$userid' limit 1" ;
     
 $resultx2 = mysqli_query($connect,$query56);
 
