@@ -72,12 +72,13 @@ if(isset($_POST["submit"]))
         
     }else{
         
-        $query3="UPDATE events SET tickets= tickets-1 WHERE id='$event'";
-        $result3 = mysqli_query($connect, $query3);
+     
+        
+        $sql="INSERT INTO ticket(memberidattending,eventid) VALUES(2,4)";
+        $result4 = mysqli_query($connect, $sql);
         
         
-        
-        if($result3){
+        if($result4){
 	echo "Event Successfully Booked";
 	} else {
 	echo "Failure!";
