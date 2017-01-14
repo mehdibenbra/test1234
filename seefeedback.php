@@ -54,7 +54,7 @@ if(isset($_POST["submit"])) {
 
  
 
-$query2 = "SELECT * FROM ticket WHERE eventid = '$choice' limit 1 " ;
+$query2 = "SELECT * FROM ticket WHERE eventid = '$choice' " ;
 
 $resultx = mysqli_query($connect,$query2);
 
@@ -68,7 +68,7 @@ $comment=$row1['usercomment'];
 echo "Grade: ". $grade." Comment: ".$comment. " From: ";
     
 
-$query56 = "SELECT * FROM members WHERE id = '$userid'" ;
+$query56 = "SELECT * FROM members WHERE id = '$userid' " ;
     
 $resultx2 = mysqli_query($connect,$query56);
 
