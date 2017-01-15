@@ -42,6 +42,10 @@ while($row=mysqli_fetch_array($result1))
                             $headers = 'From: automaticeventshm@gmail.com' . "\r\n" ;
                             $headers .= 'Reply-To: info@mydomain.com' . "\r\n";
                             mail($to, $subject, $body, $headers); //send them the email
+                                
+                                if ($result3){
+                                    echo "Email successfully sent!";
+                                }
                             }
   
     }
