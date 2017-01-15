@@ -22,7 +22,7 @@ while($row=mysqli_fetch_array($result1))
 {
  $title=$row['title'];
  $event=$row['id'];//get the id of the event
- $query2="SELECT * FROM `ticket` WHERE eventid=$event";
+ $query2="SELECT * FROM `ticket` WHERE eventid=$event limit 1";
     
    $result2=mysqli_query($connect,$query2);
    
