@@ -73,14 +73,15 @@ if(!empty($_POST['title']) && !empty($_POST['description'])) {
 	if($numrows==0)
 	{
         
-    
+	$sql="INSERT INTO events(title,description,location,startdate,enddate,categorisation,tickets,userid) VALUES('$title','$description','$location','$startdate','$enddate','$categorisation','$tickets','$id')";
 
-	
+	$result2= mysqli_query($connect,$sql);
 
-
-	
-	echo "Event ta9 Created";
-	 
+    if($result2){
+	echo "Event Successfully Created";
+	} else {
+	echo "Failure!";
+	}
 
 	} else {
 	echo "That title already exists! Please try again with another.";
