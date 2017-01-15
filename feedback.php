@@ -10,7 +10,7 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 session_start();
 $id = $_SESSION['sess_id'];
 
-    $queryfirst= "SELECT * FROM ticket " ;
+    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id'" ;
     $resultone = mysqli_query($connect,$queryfirst);
     
 ?>
