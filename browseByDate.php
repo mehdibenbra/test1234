@@ -12,17 +12,17 @@
 
  <h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">My events</a></li>
-    <li><a href="#">All events</a></li>
-    <li><a href="#">Create an event</a></li>
+    <li><a href="createEvent.php">Create Event</a></li>
+    <li><a href="myevents.php">My events</a></li>
+    <li><a href="allevents.php">All events</a></li>
+    <li><a href="createEvent.php">Create an event</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
-    <li class="active"><a href="browseByDate.php">Browse (date)</a></li>
+    <li><a href="browseByDate.php">Browse (date)</a></li>
     <li><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li> <a href="logout.php">Logout</a></li>
   </ul>
-
+    
 <h3>Browse events within the dates you wish</h3>
 <form action="resultByDate.php" method="POST">
 Start Date: <input type="date" name="date1"><br />

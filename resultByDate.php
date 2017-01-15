@@ -28,29 +28,26 @@
     $today = date("Y-m-d");
     $dateone=$_POST["date1"];
     $datetwo=$_POST["date2"];
-    
-    $connection = mysql_connect('localhost', 'root', 'root'); //The Blank string is the password
-    mysql_select_db('userr'); //ok jusquici 
-    $query = "SELECT * FROM events WHERE startdate >= '$dateone' AND startdate <= '$datetwo' ";
-    $result = mysql_query($query);
-    $numrows=mysql_num_rows($result);
+
+$connect=mysqli_connect('localhost','root','root','userr');    
+$query = "SELECT * FROM events WHERE startdate >= '$dateone' AND startdate <= '$datetwo' ";
+$result = mysqli_query($connect,$query);
+$numrows=mysqli_num_rows($result);
 ?>
 
 <?php
     if($numrows == 0){
         
         echo 'No events available on the selected dates';
-        
     }else{
-        
-        echo "<events>"; // start a table tag in the HTML
-    while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+echo "<events>"; // start a table tag in the HTML
+while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
         
          echo "Title of the event: " . $row['title'] . " @ " . $row['location'] . "</td> <td>" . " on the " . $row['startdate']."<br />". "Description: " .  $row['description']."<br />". "Type of event: " .  $row['categorisation']."<br />" . "</td><br /></tr>" ;  
     }
 
 echo "</events>"; //Close the table in HTML
-mysql_close(); //Make sure to close out the database connection
+mysqli_close($connect); //Make sure to close out the database connection
         
     }
     
