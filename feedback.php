@@ -105,6 +105,8 @@ $result33=mysqli_query($connect,$query55);
                 echo "$rate";
                 echo "$filston";
                 echo "$comment";
+                echo"$id2";
+                
             }
             /*$result34=mysql_query($sql2);
                 if ($result34){
