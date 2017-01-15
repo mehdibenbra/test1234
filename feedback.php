@@ -1,8 +1,7 @@
 
 <?php
 // php select option value from database
-session_start();
-$id2 = $_SESSION['sess_id'];
+
 
 $hostname = "localhost";
 $username = "root";
@@ -10,11 +9,12 @@ $password = "root";
 $databaseName = "userr";
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
+session_start();
+$id2 = $_SESSION['sess_id'];
 
 
-
-    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id2'" ;
-    $resultone = mysqli_query($connect,$queryfirst);
+$queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id2'" ;
+$resultone = mysqli_query($connect,$queryfirst);
     
 ?>
 <!doctype html>
@@ -94,9 +94,11 @@ $filston=$_POST['filston'];
 //$sql="INSERT INTO ticket(usergrade,usercomment) WHERE eventid='$event' AND memberidattending='$id' VALUES($event,'$event')";//
 
     
-    $query88="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='$id2' AND eventid='$filston'"; 
+    $query55 = "UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='$id2' AND eventid='$filston'";
+    
             //$sql2="UPDATE ticket SET ";  
-$result33=mysqli_query($connect,$query88);
+$result33=mysqli_query($connect,$query55);
+    
             if ($result33){
                 echo "Thank you !";
                 } else {
