@@ -10,7 +10,7 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 session_start();
 $id = $_SESSION['sess_id'];
 
-    $queryfirst= "SELECT * FROM ticket WHERE memberid='$id'" ;
+    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id'" ;
     $resultone = mysqli_query($connect,$queryfirst);
     
 ?>
@@ -44,13 +44,14 @@ $id = $_SESSION['sess_id'];
  <select name='filston'>
              <?php      
          while($row = mysqli_fetch_array($resultone)):;
-            $idbis=$row['eventid'];
      
-            $query="SELECT * FROM events WHERE startdate<NOW() AND id=$idbis";
+            $eventid=$row['eventid'];
+     
+            $query="SELECT * FROM events WHERE startdate<NOW() AND id ='$eventid'";
             $result = mysqli_query($connect,$query);
      
                 while($rowk = mysqli_fetch_array($result)):;
-                        if ($idbis==$rowk['id']):;    
+                        if ($eventid==$rowk['id']):;    
             ?>     
 
             <option 
@@ -74,7 +75,7 @@ $id = $_SESSION['sess_id'];
             <option name=five>5/5</option>
     </select>
     
-    <br>Coment: <br>
+    <br>Comment: <br>
         <input type="text" name="comment">
     
         
