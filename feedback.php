@@ -1,16 +1,17 @@
+
 <?php
 // php select option value from database
-
+session_start();
 $hostname = "localhost";
 $username = "root";
 $password = "root";
 $databaseName = "userr";
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
-session_start();
+
 $id = $_SESSION['sess_id'];
 
-    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='4'" ;
+    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id'" ;
     $resultone = mysqli_query($connect,$queryfirst);
     
 ?>
