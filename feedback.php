@@ -47,7 +47,7 @@ $id = $_SESSION['sess_id'];
      
             $eventid=$row['eventid'];
      
-            $query="SELECT * FROM events WHERE startdate<NOW() AND id =$eventid";
+            $query="SELECT * FROM events ";
             $result = mysqli_query($connect,$query);
      
                 while($rowk = mysqli_fetch_array($result)):;
