@@ -47,18 +47,24 @@ $name = $_SESSION['sess_name'];
   <ul class="nav nav-pills" role="tablist">
     <li><a href="createEvent.php">Create Event</a></li>
     <li><a href="myevents.php">Events I created</a></li>
-    <li class="active"><a href="allevents.php">All events</a></li>
-    <li><a href="browsebycategory.php">Browse (category)</a></li>
+    <li><a href="allevents.php">All events</a></li>
+    <li class="active"><a href="browsebycategory.php">Browse (category)</a></li>
     <li><a href="browsebydate.php">Browse (date)</a></li>
     <li> <a href="ticket.php"> Book ticket </a></li>
     <li><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
-    <li> <a href="hostedevents.php"> Hosted events and Guest List </a></li>
-    <li> <a href="joinedevents.php"> Joined Events </a></li>
+    <li> <a href="host.php"> Hosted events and Guest List </a></li>
+    <li> <a href="joinedevents.php"> Events I attend </a></li>
     <li><a href="logout.php">Logout</a></li>
-    </ul>    
+    </ul>  
 
- <h4> All events available on the website, <?=$_SESSION['sess_name'];?> </h4>
+    
+    
+    
+    
+    
+
+     <h4> All events available on the website, <?=$_SESSION['sess_name'];?> </h4>
     
     <div>
     

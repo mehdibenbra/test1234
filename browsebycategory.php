@@ -21,23 +21,24 @@ $id = $_SESSION['sess_id'];
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
-<title>Browse by Category</title>
+<title>Browse By Category</title>
 </head>
 <body>
 
- <h2>My Event Website</h2>                 
+<h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
-    <li><a href="home.html">Home</a></li>
-    <li><a href="myevents.php">My events</a></li>
-    <li><a href="allEvents.php">All events</a></li>
-    <li><a href="createEvent.php">Create an event</a></li>
+    <li><a href="createEvent.php">Create Event</a></li>
+    <li><a href="myevents.php">Events I created</a></li>
+    <li><a href="allevents.php">All events</a></li>
     <li class="active"><a href="browsebycategory.php">Browse (category)</a></li>
-    <li><a href="browseByDate.php">Browse (date)</a></li>
+    <li><a href="browsebydate.php">Browse (date)</a></li>
+    <li> <a href="ticket.php"> Book ticket </a></li>
     <li><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
-    <li><a href=ticket.php> Book ticket</a> </li>
+    <li> <a href="host.php"> Hosted events and Guest List </a></li>
+    <li> <a href="joinedevents.php"> Events I attend </a></li>
     <li><a href="logout.php">Logout</a></li>
-  </ul>
+    </ul>  
 
 <form action="" method="POST">
  Categorisation:   <select name="categorisation">
@@ -69,8 +70,7 @@ $numrows=mysqli_num_rows($result);
 while($row = mysqli_fetch_array($result)){ 
  
         
-   echo "<tr><td>" . $row['title'] . "" . $row['description'] . "</td> <td>" . $row['location']."</td> <td>" . $row['startdate']."</td> <td>" . $row['enddate']."</td> <td>" . $row['categorisation']."</td> <td>" . $row['tickets']."</td> <td>" . "</td><br /></tr>" ;  
-      //$row['index'] the index here is a field name
+   echo "Title of the event: " . $row['title'] . " @ " . $row['location'] . "</td> <td>" . " on the " . $row['startdate']."<br />". "Description: " .  $row['description']."<br />". "Type of event: " .  $row['categorisation']."<br />" . "</td><br /></tr>" ;
 }
    
     }

@@ -25,23 +25,25 @@ $resultone = mysqli_query($connect,$queryfirst);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
-<title>Create Events</title>
+<title> Give Feedback </title>
 </head>
 <body>
 
- <h2>My Event Website</h2>                 
+<h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
-    <li><a href="home.html">Home</a></li>
-    <li><a href="myevents.php">My events</a></li>
-    <li><a href=" class=active">All events</a></li>
-    <li><a href="createEvent.php">Create an event</a></li>
+    <li><a href="createEvent.php">Create Event</a></li>
+    <li><a href="myevents.php">Events I created</a></li>
+    <li><a href="allevents.php">All events</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
-    <li><a href="browseByDate.php">Browse (date)</a></li>
-    <li class=active><a href="feedback.php">Give feedback</a></li> 
+    <li><a href="browsebydate.php">Browse (date)</a></li>
+    <li> <a href="ticket.php"> Book ticket </a></li>
+    <li class="active"><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
-      <li><a> Book ticket</a> </li>
-    <li> <a href="logout.php">Logout</a></li>
-  </ul>
+    <li> <a href="host.php"> Hosted events and Guest List </a></li>
+    <li> <a href="joinedevents.php"> Joined Events </a></li>
+    <li><a href="logout.php">Logout</a></li>
+    </ul>
+    
 <br /><br />
     <form action="" method="POST">
  <select name='filston'>

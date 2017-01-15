@@ -6,23 +6,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
-<title>Browse by Category</title>
+<title> Result By Date </title>
 </head>
 <body>
 
- <h2>My Event Website</h2>                 
-  <ul class="nav nav-pills" role="tablist">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">My events</a></li>
-    <li><a href="#">All events</a></li>
-    <li><a href="#">Create an event</a></li>
+<h2>My Event Website</h2>                 
+<ul class="nav nav-pills" role="tablist">
+    <li><a href="createEvent.php">Create Event</a></li>
+    <li><a href="myevents.php">Events I created</a></li>
+    <li><a href="allevents.php">All events</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
-    <li class="active"><a href="browseByDate.php">Browse (date)</a></li>
+    <li class="active"><a href="browsebydate.php">Browse (date)</a></li>
+    <li> <a href="ticket.php"> Book ticket </a></li>
     <li><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
+    <li> <a href="host.php"> Hosted events and Guest List </a></li>
+    <li> <a href="joinedevents.php"> Events I attend </a></li>
     <li><a href="logout.php">Logout</a></li>
-  </ul>
-    
+</ul>
+
 <h2>Filtered events: </h2>
 <?php 
     $today = date("Y-m-d");
