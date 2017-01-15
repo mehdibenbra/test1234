@@ -71,11 +71,11 @@ $resultone = mysqli_query($connect,$queryfirst);
      
 </select>
 <select name="rate">
-            <option name=one>1/5</option>
-            <option name=two>2/5</option>
-            <option name=three>3/5</option>
-            <option name=four>4/5</option>
-            <option name=five>5/5</option>
+            <option name=one>1</option>
+            <option name=two>2</option>
+            <option name=three>3</option>
+            <option name=four>4</option>
+            <option name=five>5</option>
     </select>
     
     <br>Comment: <br>
