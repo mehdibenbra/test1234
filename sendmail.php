@@ -30,7 +30,7 @@ while($row=mysqli_fetch_array($result1))
     {
                 
                 $userattending=$rowx['memberidattending']; //get the id of the user attending the event
-                $query3="SELECT * FROM members where id='$userattending'"; //select the info of the members attending the event in 2 days
+                $query3="SELECT * FROM members where id='$userattending' limit 1"; //select the info of the members attending the event in 2 days
                 $result3 = mysqli_query($connect,$query3) ;
        
                             while($rowk=mysqli_fetch_array($result3))
