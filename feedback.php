@@ -2,6 +2,7 @@
 <?php
 // php select option value from database
 session_start();
+$id = $_SESSION['sess_id'];
 $hostname = "localhost";
 $username = "root";
 $password = "root";
@@ -9,7 +10,7 @@ $databaseName = "userr";
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 
-$id = $_SESSION['sess_id'];
+
 
     $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id'" ;
     $resultone = mysqli_query($connect,$queryfirst);
