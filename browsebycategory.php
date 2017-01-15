@@ -43,7 +43,7 @@ $id = $_SESSION['sess_id'];
  Categorisation:   <select name="categorisation">
   <option value="Tennis">Tennis event</option>
   <option value="Football">Football event</option>
-  <option value="Basket">Basket-ball event</option>
+  <option value="Basket-ball">Basket-ball event</option>
   <option value="Tournament">Tournament</option>
 </select> 
     
