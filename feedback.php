@@ -102,7 +102,9 @@ $result33=mysqli_query($connect,$query55);
             if ($result33){
                 echo "Thank you !";
                 } else {
-                echo "Failure 1!";
+                echo "$rate";
+                echo "$filston";
+                echo "$comment";
             }
             /*$result34=mysql_query($sql2);
                 if ($result34){
