@@ -94,9 +94,9 @@ $filston=$_POST['filston'];
 //$sql="INSERT INTO ticket(usergrade,usercomment) WHERE eventid='$event' AND memberidattending='$id' VALUES($event,'$event')";//
 
     
-    $sql="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='".$id."' AND eventid='$filston'"; 
+    $query88="UPDATE ticket SET usergrade='$rate',usercomment='$comment' WHERE memberidattending='$id2' AND eventid='$filston'"; 
             //$sql2="UPDATE ticket SET ";  
-$result33=mysqli_query($connect,$sql);
+$result33=mysqli_query($connect,$query88);
             if ($result33){
                 echo "Thank you !";
                 } else {
