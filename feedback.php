@@ -10,7 +10,7 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 session_start();
 $id = $_SESSION['sess_id'];
 
-    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='$id'" ;
+    $queryfirst= "SELECT * FROM ticket WHERE memberidattending='4'" ;
     $resultone = mysqli_query($connect,$queryfirst);
     
 ?>
@@ -23,7 +23,7 @@ $id = $_SESSION['sess_id'];
 
 <head>
 <title>Create Events</title>
-</head> 
+</head>
 <body>
 
  <h2>My Event Website</h2>                 
@@ -47,7 +47,7 @@ $id = $_SESSION['sess_id'];
      
             $eventid=$row['eventid'];
      
-            $query="SELECT * FROM events WHERE startdate<NOW() AND id =$eventid";
+            $query="SELECT * FROM events WHERE startdate<NOW() AND id ='$eventid'";
             $result = mysqli_query($connect,$query);
      
                 while($rowk = mysqli_fetch_array($result)):;
