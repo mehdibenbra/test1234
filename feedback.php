@@ -40,7 +40,7 @@ $resultone = mysqli_query($connect,$queryfirst);
     <li class="active"><a href="feedback.php">Give feedback</a></li> 
     <li><a href="seefeedback.php">See feedback</a></li>
     <li> <a href="host.php"> Hosted events and Guest List </a></li>
-    <li> <a href="joinedevents.php"> Joined Events </a></li>
+    <li> <a href="joinedevents.php"> Events I attend </a></li>
     <li><a href="logout.php">Logout</a></li>
     </ul>
     
