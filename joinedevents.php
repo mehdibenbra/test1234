@@ -27,7 +27,7 @@ if(!isset($_SESSION["sess_id"])){
 <h2>My Event Website</h2>                 
   <ul class="nav nav-pills" role="tablist">
     <li><a href="createEvent.php">Create Event</a></li>
-    <li class="active"><a href="myevents.php">Events I created</a></li>
+    <li><a href="myevents.php">Events I created</a></li>
     <li><a href="allevents.php">All events</a></li>
     <li><a href="browsebycategory.php">Browse (category)</a></li>
     <li><a href="browsebydate.php">Browse (date)</a></li>
