@@ -104,7 +104,7 @@ $result33 = mysqli_query($connect,$query55);
             if ($result33){
                 echo "Thank you !";
                 } else {
-                echo "Feedback failed to be sent.."
+                echo "Feedback failed to be sent..";
             }
             /*$result34=mysql_query($sql2);
                 if ($result34){
